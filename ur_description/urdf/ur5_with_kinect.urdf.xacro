@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot name="ur5" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
+  <xacro:include filename="$(find ur_description)/urdf/kinect.xacro" />
+  
+  <!-- kinetc's position -->
+  <xacro:property name="knt_x" value="0.7" />
+  <xacro:property name="knt_y" value="0.5" />
+  <xacro:property name="knt_z" value="0" />
+  <xacro:property name="M_PI" value="3.14159"/>
+  <ur5 />
+
+  <joint name="kinect_frame_joint" type="fixed" >
+	<origin xyz="${knt_x} ${knt_y} ${knt_z}" rpy="0 0 0" />
+	<parent link="wrist_3_link" />
+	<child link="camera_link" />
+  </joint>
+  <xacro:kinect_camera prefix="camera" />
+</robot>
+  

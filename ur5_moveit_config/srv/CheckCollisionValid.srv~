@@ -1,0 +1,4 @@
+float64[] values
+---
+# valid or not
+bool valid
