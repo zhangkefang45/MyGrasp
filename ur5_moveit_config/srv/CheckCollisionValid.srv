@@ -1,7 +1,0 @@
-# joint names
-# string[] names
-# joint values
-float64[] values
----
-# valid or not
-bool valid
