@@ -29,7 +29,7 @@ class MoveItObstaclesDemo:
         rospy.sleep(1)
 
         # 初始化需要使用move group控制的机械臂中的arm group
-        arm = MoveGroupCommander('manipulator')
+        arm = MoveGroupCommander('arm')
 
         # 获取终端link的名称
         end_effector_link = arm.get_end_effector_link()
@@ -49,7 +49,7 @@ class MoveItObstaclesDemo:
         arm.set_planning_time(5)
 
         # 设置场景物体的名称
-        floor_id = 'floor'
+        # floor_id = 'floor'
         table_id = 'table'
         box1_id = 'box1'
         box2_id = 'box2'
@@ -72,15 +72,15 @@ class MoveItObstaclesDemo:
         table_size = [0.2, 0.7, 0.01]
         box1_size = [0.1, 0.05, 0.05]
         box2_size = [0.05, 0.05, 0.15]
-        floor_size = [1.5, 1.5, 0.01]
+        # floor_size = [1.5, 1.5, 0.01]
 
-        floor_pose = PoseStamped()
-        floor_pose.header.frame_id = reference_frame
-        floor_pose.pose.position.x = 0
-        floor_pose.pose.position.y = 0
-        floor_pose.pose.position.z = -0.01
-        floor_pose.pose.orientation.w = 1.0
-        scene.add_box(floor_id, floor_pose, floor_size)
+        # floor_pose = PoseStamped()
+        # floor_pose.header.frame_id = reference_frame
+        # floor_pose.pose.position.x = 0
+        # floor_pose.pose.position.y = 0
+        # floor_pose.pose.position.z = -0.01
+        # floor_pose.pose.orientation.w = 1.0
+        # scene.add_box(floor_id, floor_pose, floor_size)
         # 将三个物体加入场景当中
         table_pose = PoseStamped()
         table_pose.header.frame_id = reference_frame
@@ -110,7 +110,7 @@ class MoveItObstaclesDemo:
         self.setColor(table_id, 0.8, 0, 0, 1.0)
         self.setColor(box1_id, 0.8, 0.4, 0, 1.0)
         self.setColor(box2_id, 0.8, 0.4, 0, 1.0)
-        self.setColor(floor_id, 0.8, 0.3, 0.5, 1.0)
+        # self.setColor(floor_id, 0.8, 0.3, 0.5, 1.0)
 
         # 将场景中的颜色设置发布
         self.sendColors()

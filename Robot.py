@@ -18,21 +18,25 @@ class Robot():
     def __init__(self):
         # 初始化move_group的API
         moveit_commander.roscpp_initialize(sys.argv)
+
         # 初始化ROS节点
         rospy.init_node('moveit_fk_demo', anonymous=True)
+
         # 初始化move_group控制的机械臂中的arm group
         self.arm = moveit_commander.MoveGroupCommander('arm')
         self.gripper = moveit_commander.MoveGroupCommander('gripper')
+
         # 机械臂的允许误差值
         self.arm.set_goal_joint_tolerance(0.001)
         self.gripper.set_goal_joint_tolerance(0.001)
         self.arm_goal = [0, 0, 0, 0, 0, 0]
+
         # 控制机械臂竖起
-        self.arm.set_named_target('up')
-        self.arm.go()
-        rospy.sleep(2)
+        # self.arm.set_named_target('up')
+        # self.arm.go()
+        # rospy.sleep(2)
         # 控制夹爪运动
-        self.gripper.set_joint_value_target([0.6])
+        self.gripper.set_named_target('almost_closed')
         self.gripper.go()
         rospy.sleep(2)
         #self.reset()

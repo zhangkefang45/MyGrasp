@@ -18,6 +18,6 @@
     <arg name="debug" default="$(arg debug)"/>
   </include>
 
-  <!--<include file="$(find myrobot_config)/launch/myrobot2_moveit_planning_execution.launch"/>-->
+  <include file="$(find myrobot2_moveit_config)/launch/myrobot2_moveit_planning_execution.launch"/>
 
 </launch>

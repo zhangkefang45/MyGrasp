@@ -15,7 +15,7 @@
     <!--rosparam param="/source_list">[/simple_gripper/joint_states]</rosparam--> <!--Arm position in rviz springt hiermit-->
   </node>
 
-  <include file="$(find myrobot_config)/launch/move_group.launch">
+  <include file="$(find myrobot2_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
     <arg name="debug" default="true" /> <!-- ergänzt, damit debug aktiviert wird-->
   </include>
