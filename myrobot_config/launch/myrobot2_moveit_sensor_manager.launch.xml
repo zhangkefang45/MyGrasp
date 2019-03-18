@@ -1,0 +1,3 @@
+<launch>
+	<rosparam command="load" file="$(find myrobot_config)/config/sensors.yaml" />
+</launch>
