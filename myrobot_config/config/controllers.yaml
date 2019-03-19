@@ -13,8 +13,8 @@ controller_list:
 
 #-------------for gazebo gripper---------------------------
   - name: gripper
-    action_ns: follow_joint_trajectory
-    type: FollowJointTrajectory
+    action_ns: gripper_cmd # follow_joint_trajectory
+    type: GripperCommand # FollowJointTrajectory
     default: true
     joints:
       - simple_gripper_robotiq_85_left_knuckle_joint

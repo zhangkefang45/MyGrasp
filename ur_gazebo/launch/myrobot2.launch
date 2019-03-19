@@ -18,7 +18,8 @@
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
     <arg name="headless" value="$(arg headless)"/>
   </include>
-
+  <!-- solve the bug-->
+   <!--<rosparam file="$(find ur_gazebo)/controller/gazebo_controller.yaml" command="load" /> -->
   <!-- Convert an xacro and put on parameter server -->
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find ur_description)/urdf/myrobot2_macro.xacro' " />
 

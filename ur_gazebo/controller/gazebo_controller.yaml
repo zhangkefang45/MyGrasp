@@ -1,0 +1,67 @@
+gazebo_ros_control:
+  pid_gains:
+    # these gains are used by the gazebo_ros_control plugin
+    simple_gripper_robotiq_85_left_knuckle_joint:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    # the following gains are used by the gazebo_mimic_joint plugin
+    simple_gripper_robotiq_85_base_joint:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    simple_gripper_robotiq_85_right_knuckle_joint:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    simple_gripper_robotiq_85_left_finger_joint:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    simple_gripper_robotiq_85_right_finger_joint:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    simple_gripper_robotiq_85_left_inner_knuckle_joint:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    simple_gripper_robotiq_85_right_inner_knuckle_joint:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    simple_gripper_robotiq_85_left_finger_tip_joint:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    simple_gripper_robotiq_85_right_finger_tip_joint:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true

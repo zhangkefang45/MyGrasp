@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="limited" default="false"/>
-  <arg name="paused" default="false"/>
+  <arg name="paused" default="true"/>
   <arg name="gui" default="true"/>
   
   <arg name="world_name" value="$(find ur5_moveit_config)/testworld.world" />
+  <!-- solve the bug-->
+   <rosparam file="$(find ur_gazebo)/config/gazebo_controller.yaml" command="load" />
 
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -19,12 +21,12 @@
     <arg name="limited" value="$(arg limited)"/>
   </include>
 
-  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <!-- push robot_description to factory and spawn robot in gazebo -->k
   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.1" respawn="false" output="screen" />
 
   <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
 
-  <rosparam file="$(find ur_gazebo)/config/gripper_controller_robotiq.yaml" command="load"/> 
+  <rosparam file="$(find ur_gazebo)/controller/gripper_controller_robotiq.yaml" command="load"/> 
   <node name="gripper_controller_spawner" pkg="controller_manager" type="spawner" args="gripper --shutdown-timeout 0.5" />
 
   <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5.yaml" command="load"/>

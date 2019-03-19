@@ -36,7 +36,7 @@ class Robot():
         # self.arm.go()
         # rospy.sleep(2)
         # 控制夹爪运动
-        self.gripper.set_named_target('almost_closed')
+        self.gripper.set_named_target('close')
         self.gripper.go()
         rospy.sleep(2)
         #self.reset()
