@@ -6,7 +6,7 @@ import numpy as np
 import moveit_commander
 from moveit_commander import MoveGroupCommander, PlanningSceneInterface
 from moveit_msgs.msg import PlanningScene, ObjectColor
-
+from geometry_msgs.msg import PoseStamped, Pose
 
 
 class Robot():
@@ -25,21 +25,50 @@ class Robot():
         # 初始化move_group控制的机械臂中的arm group
         self.arm = moveit_commander.MoveGroupCommander('arm')
         self.gripper = moveit_commander.MoveGroupCommander('gripper')
+        # 创建一个发布场景变化信息的发布者
+        self.scene_pub = rospy.Publisher('planning_scene', PlanningScene, queue_size=10)
 
+        # 创建一个发布抓取姿态的发布者
+        self.gripper_pose_pub = rospy.Publisher('gripper_pose', PoseStamped, queue_size=10)
+        scene = PlanningSceneInterface()
         # 机械臂的允许误差值
         self.arm.set_goal_joint_tolerance(0.001)
         self.gripper.set_goal_joint_tolerance(0.001)
         self.arm_goal = [0, 0, 0, 0, 0, 0]
+
+
+        self.colors = dict()
+        target_size = [0.02, 0.01, 0.12]
+        target_id = 'test'
+        # 设置目标物体的位置，位于桌面之上两个盒子之间
+        target_pose = PoseStamped()
+        target_pose.header.frame_id = "base_link"
+        target_pose.pose.position.x = 0.82
+        target_pose.pose.position.y = 0.32
+        target_pose.pose.position.z = 0
+        target_pose.pose.orientation.w = 1.0
+
+        # 将抓取的目标物体加入场景中
+        scene.add_box(target_id, target_pose, target_size)
+
+        # 将目标物体设置为黄色
+        self.setColor(target_id, 0.9, 0.9, 0, 1.0)
+
+        # 将场景中的颜色设置发布
+        self.sendColors()
 
         # 控制机械臂竖起
         # self.arm.set_named_target('up')
         # self.arm.go()
         # rospy.sleep(2)
         # 控制夹爪运动
-        self.gripper.set_named_target('close')
-        self.gripper.go()
-        rospy.sleep(2)
+        # self.gripper.set_joint_value_target(0.6)
+        # self.gripper.go()
+        # rospy.sleep(2)
         #self.reset()
+        self.arm.set_named_target('up')
+        self.arm.go()
+        rospy.sleep(2)
 
     # 渲染
     def render(self):

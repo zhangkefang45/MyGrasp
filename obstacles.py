@@ -39,7 +39,7 @@ class MoveItObstaclesDemo:
         arm.set_goal_orientation_tolerance(0.05)
 
         # 当运动规划失败后，允许重新规划
-        arm.allow_replanning(True)
+        arm.allow_replanning(False)
 
         # 设置目标位置所使用的参考坐标系
         reference_frame = 'base_link'
@@ -61,9 +61,9 @@ class MoveItObstaclesDemo:
         rospy.sleep(1)
 
         # 控制机械臂先回到初始化位置
-        arm.set_named_target('up')
-        arm.go()
-        rospy.sleep(2)
+        #arm.set_named_target('up')
+        #arm.go()
+        #rospy.sleep(2)
 
         # 设置桌面的高度
         table_ground = 0.5
